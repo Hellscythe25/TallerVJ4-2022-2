@@ -10,7 +10,7 @@ public class Turret : Entity
     [SerializeField] private float turretRange = 3;
     [SerializeField] NewPlayer player;
     public ENEMYSTATES states;
-
+    [SerializeField] float turnRate = 50;
     public float cooldown = 1;
     public float cooldownTimer;
     new void Awake()
@@ -37,35 +37,43 @@ public class Turret : Entity
         {
             isAlive = false;
         }
-        cooldownTimer -= Time.fixedDeltaTime;
+        
         if (player != null)
         {
-
+            cooldownTimer -= Time.fixedDeltaTime;
             switch (states)
             {
                 case ENEMYSTATES.IDLE:
-                                     
+                    if (player != null && Vector3.Distance(player.transform.position, this.transform.position) < turretRange)
+                    {
+                        transform.up = (player != null ? Vector3.Lerp(transform.up, (player.transform.position - this.transform.position), turnRate) : transform.up);
+                    }
+                    if (player != null && Vector3.Distance(player.transform.position, this.transform.position) < turretRange && cooldownTimer <= 0)
+                    {
+                        states = ENEMYSTATES.SHOOT;
+                    }
                     break;  
 
                 case ENEMYSTATES.SHOOT:
                     // SI TENEMOS COOLDOWN, DISPARAR
-                    rb2d.angularVelocity = 0;
-                    rb2d.velocity = Vector2.zero;
-                    if (cooldownTimer <= 0)
-                    {
-                        //Apuntar al player
-                        direction = player.transform.position - this.transform.position;
-                        direction = direction.normalized;
-                        //DISPARAR
-                        Shoot();
-                        //RESETEAR EL CD
-                        cooldownTimer = cooldown;
-                    }
-                   
-                    
+                    //rb2d.angularVelocity = 0;
+                    //rb2d.velocity = Vector2.zero;
+                    direction = player.transform.position - this.transform.position;
+                    direction = direction.normalized;
+                    //DISPARAR
+                    Shoot();
+                    //RESETEAR EL CD
+                    cooldownTimer = cooldown;
+
+                    states = ENEMYSTATES.IDLE;
                     break;
                 
             }
+        }
+
+        if (!isAlive)
+        {
+            this.gameObject.SetActive(false);
         }
     }
 
