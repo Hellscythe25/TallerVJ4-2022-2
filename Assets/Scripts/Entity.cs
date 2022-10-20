@@ -19,6 +19,7 @@ public class Entity : MonoBehaviour
     protected Vector2 direction;
     [SerializeField] protected Transform bulletSpawn;
     [SerializeField] protected GameObject bullet;
+    [SerializeField] protected GameObject missile;
     public bool isAlive = true;
     // Start is called before the first frame update
     protected void Awake()
@@ -43,6 +44,13 @@ public class Entity : MonoBehaviour
         go.GetComponent<Bullet>().SetDirection(direction);
         go.tag = this.tag;
     }
+
+    //protected void LaunchMissile() 
+    //{
+    //    GameObject go = Instantiate(missile, bulletSpawn.position, Quaternion.identity);
+    //    go.GetComponent<HomingMissile>().SetDirection(direction);
+    //    go.tag = this.tag;
+    //}
 
     public void TakeDamage(int dmg) 
     {

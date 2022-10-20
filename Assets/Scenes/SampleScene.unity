@@ -246,6 +246,7 @@ MonoBehaviour:
   speed: 0
   bulletSpawn: {fileID: 633081230}
   bullet: {fileID: 6533189508210522917, guid: 5b1d380c09405744788dc46c982ff041, type: 3}
+  missile: {fileID: 0}
   isAlive: 1
   turretRange: 5
   player: {fileID: 0}
@@ -587,6 +588,7 @@ MonoBehaviour:
   speed: 2
   bulletSpawn: {fileID: 1004892673}
   bullet: {fileID: 3048109622158602437, guid: 22cbf5fb810dff74cbdb6f22c3206d8e, type: 3}
+  missile: {fileID: 0}
   isAlive: 1
   boosterMult: 2
   boosters: 10
@@ -10552,7 +10554,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1141422015525200338, guid: 44f7847e4b6b2d84bb031d5bfeadf226, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1141422015525200338, guid: 44f7847e4b6b2d84bb031d5bfeadf226, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1141422015525200429, guid: 44f7847e4b6b2d84bb031d5bfeadf226, type: 3}
       propertyPath: m_RootOrder
@@ -10599,6 +10605,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1141422015525200431, guid: 44f7847e4b6b2d84bb031d5bfeadf226, type: 3}
+      propertyPath: angle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1141422015525200431, guid: 44f7847e4b6b2d84bb031d5bfeadf226, type: 3}
       propertyPath: speed
       value: 5
       objectReference: {fileID: 0}
@@ -10610,6 +10620,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 394162469}
+    - target: {fileID: 1141422015525200431, guid: 44f7847e4b6b2d84bb031d5bfeadf226, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 8558306319963969475, guid: 0a20b0f96f5d5244f96973fcd6bda333, type: 3}
     - target: {fileID: 1141422015525200431, guid: 44f7847e4b6b2d84bb031d5bfeadf226, type: 3}
       propertyPath: rotateSpeed
       value: 100

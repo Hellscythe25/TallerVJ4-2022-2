@@ -20,6 +20,7 @@ public class HomingMissile : MonoBehaviour
     [SerializeField] BoxCollider2D bc2d;
     [SerializeField] bool isPlaying = false;
     [SerializeField] float destroyTime;
+    [SerializeField] GameObject explosion;
 
     private void Awake()
     {
@@ -90,13 +91,11 @@ public class HomingMissile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(this.tag))
+        if (!collision.CompareTag(this.tag))
         {
-
-        }
-        else
-        {
-
+            collision.gameObject.GetComponent<Entity>().TakeDamage(damage);
+            Instantiate(explosion, this.transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 }
