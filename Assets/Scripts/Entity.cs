@@ -5,7 +5,6 @@ using UnityEngine;
 public enum ENEMYSTATES { IDLE, SEEK, SHOOT, FLEE, LONGSHOT, WANDER };
 
 
-[RequireComponent(typeof(Health))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
@@ -13,7 +12,7 @@ public class Entity : MonoBehaviour
 {
     protected Rigidbody2D rb2d;
     protected BoxCollider2D bc2d;
-    protected Health health;
+    [SerializeField] protected Health health;
     protected SpriteRenderer sr;
     [SerializeField] protected float speed = 2;
     protected Vector2 direction;
@@ -25,17 +24,15 @@ public class Entity : MonoBehaviour
     protected void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        bc2d = GetComponent<BoxCollider2D>();
-        health = GetComponent<Health>();
+        bc2d = GetComponent<BoxCollider2D>();        
         sr = GetComponent<SpriteRenderer>();
     }
 
     protected void Start()
     {
         rb2d.gravityScale = 0;
-        health.SetHealth(10);
-        health.SetShields(20);
-        //print(health.CurrentHP());
+        health = new Health(5, 5);
+        print(health.CurrentHP());
     }
 
     protected void Shoot()
@@ -52,7 +49,7 @@ public class Entity : MonoBehaviour
     //    go.tag = this.tag;
     //}
 
-    public void TakeDamage(int dmg) 
+    public virtual void TakeDamage(int dmg) 
     {
         health.TakeDamage(dmg);
     }

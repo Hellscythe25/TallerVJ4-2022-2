@@ -93,7 +93,6 @@ GameObject:
   - component: {fileID: 3200850479828107621}
   - component: {fileID: 3670674703533301493}
   - component: {fileID: 4315344593922059310}
-  - component: {fileID: 4935210324875627069}
   - component: {fileID: 5908763481259283453}
   - component: {fileID: 2463898392143938130}
   m_Layer: 0
@@ -166,20 +165,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4291887, y: 1.4291887}
   m_EdgeRadius: 0
---- !u!114 &4935210324875627069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5908763481259283452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909d3b70ae3e17c4dac58067011f846a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitPoints: 0
-  shields: 0
 --- !u!114 &5908763481259283453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,9 +177,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b82df63f955d7842b57a933b183e3f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health:
+    hitPoints: 0
+    shields: 0
   speed: 4
   bulletSpawn: {fileID: 8541245035645191248}
   bullet: {fileID: 6533189508210522917, guid: 5b1d380c09405744788dc46c982ff041, type: 3}
+  missile: {fileID: 0}
   isAlive: 1
   states: 0
   maxForce: 2

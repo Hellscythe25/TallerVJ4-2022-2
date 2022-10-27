@@ -13,7 +13,7 @@ public class Fighter : Entity
 
     public float cooldown = 1;
     public float cooldownTimer;
-
+    private int points = 40;
     new void Awake() 
     {
         base.Awake();
@@ -120,6 +120,7 @@ public class Fighter : Entity
         }
         if (!isAlive)
         {
+            GameManager.Instance.AddPoints(points);
             this.gameObject.SetActive(false);
         }
 

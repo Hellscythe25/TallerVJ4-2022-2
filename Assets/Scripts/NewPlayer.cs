@@ -10,16 +10,18 @@ public class NewPlayer : Entity
     bool isMoving = false;
     float angleP;
     public ParticleSystem moveParticles, turboParticles;
+    private PlayerHealthUI healthUI;
 
     new void Awake() 
     {
         base.Awake();
+        healthUI = GetComponent<PlayerHealthUI>();
     }
 
     new void Start() 
     {
         base.Start();
-        
+        healthUI.SetHealth(health);
     }
 
     private void Update()
@@ -97,5 +99,11 @@ public class NewPlayer : Entity
             turboParticles.Pause();
             turboParticles.gameObject.SetActive(false);
         }
+    }
+
+    public override void TakeDamage(int dmg)
+    {
+        health.TakeDamage(dmg);
+        healthUI.SetHealth(health);
     }
 }

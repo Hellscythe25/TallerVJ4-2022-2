@@ -13,6 +13,7 @@ public class Turret : Entity
     [SerializeField] float turnRate = 50;
     public float cooldown = 1;
     public float cooldownTimer;
+    private int points = 15;
     new void Awake()
     {
         base.Awake();
@@ -48,10 +49,11 @@ public class Turret : Entity
                     {
                         transform.up = (player != null ? Vector3.Lerp(transform.up, (player.transform.position - this.transform.position), turnRate) : transform.up);
                     }
-                    if (player != null && Vector3.Distance(player.transform.position, this.transform.position) < turretRange && cooldownTimer <= 0)
+                    if (player != null && player.gameObject.activeInHierarchy && Vector3.Distance(player.transform.position, this.transform.position) < turretRange && cooldownTimer <= 0)
                     {
                         states = ENEMYSTATES.SHOOT;
                     }
+                    
                     break;  
 
                 case ENEMYSTATES.SHOOT:
@@ -70,9 +72,10 @@ public class Turret : Entity
                 
             }
         }
-
+        
         if (!isAlive)
         {
+            GameManager.Instance.AddPoints(points);
             this.gameObject.SetActive(false);
         }
     }
