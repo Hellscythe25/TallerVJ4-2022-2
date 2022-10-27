@@ -19,6 +19,7 @@ public class NewPlayer : Entity
     new void Start() 
     {
         base.Start();
+        
     }
 
     private void Update()

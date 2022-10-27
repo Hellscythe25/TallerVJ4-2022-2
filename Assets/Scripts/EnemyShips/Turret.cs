@@ -28,7 +28,7 @@ public class Turret : Entity
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print(collision.gameObject.name);
+        //print(collision.gameObject.name);
     }
 
     private void FixedUpdate()
