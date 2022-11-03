@@ -23,6 +23,10 @@ public class ProgressManager : MonoBehaviour
     {
         progressData.totalScore = 0;
         score = 0;
+        for (int i = 0; i < progressData.levels.Length; i++)
+        {
+            progressData.levels[i] = 0;
+        }
         scoreText.text = score.ToString();
         string json = JsonUtility.ToJson(progressData);
         SaveData.Save(dataPath, json);

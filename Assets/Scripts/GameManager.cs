@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
 
     string dataPath = "test.json";
 
+    public int currentLevel;
+    
+    [SerializeField]private int levelScore;
+    public int maxLevelScore = 100;
 
     private void Awake()
     {
@@ -39,9 +43,17 @@ public class GameManager : MonoBehaviour
     public void AddPoints(int points) 
     {
         score += points;
+        levelScore += points;
         progress.totalScore = score;
         scoreText.text = score.ToString();
+        if (levelScore >= maxLevelScore)
+        {
+            progress.levels[currentLevel] = 1;
+        }
+
         string json = JsonUtility.ToJson(progress);
         SaveData.Save(dataPath, json);
+
+        
     }
 }

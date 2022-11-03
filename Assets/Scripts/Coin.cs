@@ -19,7 +19,7 @@ public class Coin : MonoBehaviour
     private void Start()
     {
         circleCollider.isTrigger = true;
-        points = 2;
+        points = 20;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
