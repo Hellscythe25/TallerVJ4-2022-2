@@ -80,4 +80,9 @@ public class Turret : Entity
         }
     }
 
+    private void OnMouseOver()
+    {
+        print(gameObject.name);
+    }
+
 }

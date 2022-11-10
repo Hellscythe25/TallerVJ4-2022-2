@@ -243,10 +243,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health:
-    hitPoints: 0
-    shields: 0
-    maxHealth: 0
-    maxShields: 0
+    hitPoints: 2
+    shields: 2
+    maxHealth: 2
+    maxShields: 2
   speed: 0
   bulletSpawn: {fileID: 633081230}
   bullet: {fileID: 6533189508210522917, guid: 5b1d380c09405744788dc46c982ff041, type: 3}
@@ -488,6 +488,77 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3200850479828107621, guid: 50ad4967f93122340b2945504b310c51, type: 3}
   m_PrefabInstance: {fileID: 8541245034778684410}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &401360590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 401360593}
+  - component: {fileID: 401360592}
+  - component: {fileID: 401360591}
+  m_Layer: 0
+  m_Name: LevelTrigger (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &401360591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401360590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b655fcdc4e425d4ea193568a7ca714c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextLevel: 1
+--- !u!61 &401360592
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401360590}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &401360593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401360590}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.785, y: 0.769, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &406260374
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +625,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &478996963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 478996965}
+  - component: {fileID: 478996964}
+  m_Layer: 0
+  m_Name: SceneHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &478996964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478996963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb376b218cb85df429f58d78a1fbd317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &478996965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478996963}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &486579495
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +678,7 @@ GameObject:
   m_Component:
   - component: {fileID: 486579496}
   - component: {fileID: 486579497}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Radius
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -719,6 +833,77 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &531842659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 531842661}
+  - component: {fileID: 531842660}
+  - component: {fileID: 531842662}
+  m_Layer: 0
+  m_Name: LevelTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &531842660
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531842659}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &531842661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531842659}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.69, y: 2.57, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &531842662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531842659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b655fcdc4e425d4ea193568a7ca714c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextLevel: 3
 --- !u!1 &540288855
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,10 +1028,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health:
-    hitPoints: 0
-    shields: 0
-    maxHealth: 0
-    maxShields: 0
+    hitPoints: 2
+    shields: 2
+    maxHealth: 2
+    maxShields: 2
   speed: 2
   bulletSpawn: {fileID: 1004892673}
   bullet: {fileID: 3048109622158602437, guid: 22cbf5fb810dff74cbdb6f22c3206d8e, type: 3}
@@ -856,6 +1041,9 @@ MonoBehaviour:
   boosters: 10
   moveParticles: {fileID: 1168615679}
   turboParticles: {fileID: 762645482}
+  inputType: 0
+  joystick: {fileID: 0}
+  deathParticles: {fileID: 3606214011638207971, guid: 1988a25732306d945abc7f15c46479c2, type: 3}
 --- !u!114 &563855415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12037,6 +12225,10 @@ MonoBehaviour:
   scoreText: {fileID: 723078569}
   progress:
     totalScore: 0
+    levels: 0000000000000000000000000000000000000000
+  currentLevel: 0
+  levelScore: 0
+  maxLevelScore: 100
 --- !u!4 &2043311869
 Transform:
   m_ObjectHideFlags: 0
@@ -12306,6 +12498,22 @@ PrefabInstance:
     - target: {fileID: 5908763481259283452, guid: 50ad4967f93122340b2945504b310c51, type: 3}
       propertyPath: m_Name
       value: Fighter
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908763481259283453, guid: 50ad4967f93122340b2945504b310c51, type: 3}
+      propertyPath: health.shields
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908763481259283453, guid: 50ad4967f93122340b2945504b310c51, type: 3}
+      propertyPath: health.hitPoints
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908763481259283453, guid: 50ad4967f93122340b2945504b310c51, type: 3}
+      propertyPath: health.maxHealth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908763481259283453, guid: 50ad4967f93122340b2945504b310c51, type: 3}
+      propertyPath: health.maxShields
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4935210324875627069, guid: 50ad4967f93122340b2945504b310c51, type: 3}

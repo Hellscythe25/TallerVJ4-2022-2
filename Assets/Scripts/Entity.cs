@@ -31,7 +31,7 @@ public class Entity : MonoBehaviour
     protected void Start()
     {
         rb2d.gravityScale = 0;
-        health = new Health(5, 5);
+        //health = new Health(5, 5);
         print(health.CurrentHP());
     }
 

@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != this.gameObject.tag)
+        if (collision.gameObject.tag != this.gameObject.tag && collision.gameObject.layer != 2)
         {
             //DAMAGE
             collision.gameObject.GetComponent<Entity>().TakeDamage(bulletDamage);

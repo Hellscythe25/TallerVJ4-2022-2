@@ -8,11 +8,13 @@ public class NewPlayer : Entity
     [SerializeField] float boosters = 10;
     bool isBoosting = false;
     bool isMoving = false;
+    bool isDestroyed = false;
     float angleP;
     public ParticleSystem moveParticles, turboParticles;
     private PlayerHealthUI healthUI;
     public PLAYERINPUT inputType;
     public Joystick joystick;
+    public GameObject deathParticles;
     new void Awake() 
     {
         base.Awake();
@@ -68,68 +70,80 @@ public class NewPlayer : Entity
             isAlive = false;
         }
 
-        if (!isAlive)
+        if (!isAlive && !isDestroyed)
         {
-            this.gameObject.SetActive(false);
+            isDestroyed = true;
+            Instantiate(deathParticles, this.transform.position, Quaternion.identity);
+            rb2d.velocity = new Vector3();
+            Invoke("DelayedDeath", 0.5f);           
         }
-    }    
+    }
 
+    private void DelayedDeath() 
+    {
+        this.gameObject.SetActive(false);
+    }
     // Se ejecuta cada 0.02 segundos
     void FixedUpdate()
     {
         Vector2 axis = new Vector2();
-        switch (inputType)
+        if (isAlive)
         {
-            case PLAYERINPUT.KEYBOARD:
-                //Look at mouse
-                float camDis = Camera.main.transform.position.y - this.transform.position.y;
-                Vector3 mouse = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, camDis));
-                angleP = Mathf.Atan2(mouse.y - this.transform.position.y, mouse.x - this.transform.position.x) * Mathf.Rad2Deg;
-                this.transform.rotation = Quaternion.Euler(0, 0, angleP - 90);
+            switch (inputType)
+            {
+                case PLAYERINPUT.KEYBOARD:
+                    //Look at mouse
+                    float camDis = Camera.main.transform.position.y - this.transform.position.y;
+                    Vector3 mouse = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, camDis));
+                    angleP = Mathf.Atan2(mouse.y - this.transform.position.y, mouse.x - this.transform.position.x) * Mathf.Rad2Deg;
+                    this.transform.rotation = Quaternion.Euler(0, 0, angleP - 90);
 
-                axis = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-                break;
-            case PLAYERINPUT.JOYSTICK:
-                axis = new Vector2(joystick.Horizontal, joystick.Vertical);
-                break;
+                    axis = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                    break;
+                case PLAYERINPUT.JOYSTICK:
+                    axis = new Vector2(joystick.Horizontal, joystick.Vertical);
+                    break;
+            }
+
+            axis = axis.normalized;
+
+            rb2d.velocity = isBoosting ? axis * speed * boosterMult : axis * speed;
+            boosters = (boosters < 0 ? boosters = 0 : boosters);
+            direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            direction = direction.normalized;
+
+            if (rb2d.velocity == Vector2.zero)
+            {
+                isMoving = false;
+            }
+            else
+            {
+                isMoving = true;
+            }
+
+            if (isMoving)
+            {
+                moveParticles.gameObject.SetActive(true);
+                moveParticles.Play();
+            }
+            else
+            {
+                moveParticles.Pause();
+                moveParticles.gameObject.SetActive(false);
+            }
+            if (isBoosting)
+            {
+                turboParticles.gameObject.SetActive(true);
+                turboParticles.Play();
+            }
+            else
+            {
+                turboParticles.Pause();
+                turboParticles.gameObject.SetActive(false);
+            }
         }
         
-        axis = axis.normalized;
         
-        rb2d.velocity = isBoosting ? axis * speed * boosterMult : axis * speed;
-        boosters = (boosters < 0 ? boosters = 0 : boosters);
-        direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        direction = direction.normalized;
-
-        if (rb2d.velocity == Vector2.zero)
-        {
-            isMoving = false;
-        }
-        else
-        {
-            isMoving = true;
-        }
-
-        if (isMoving)
-        {
-            moveParticles.gameObject.SetActive(true);
-            moveParticles.Play();
-        }
-        else
-        {
-            moveParticles.Pause();
-            moveParticles.gameObject.SetActive(false);            
-        }
-        if (isBoosting)
-        {
-            turboParticles.gameObject.SetActive(true);
-            turboParticles.Play();
-        }
-        else
-        {            
-            turboParticles.Pause();
-            turboParticles.gameObject.SetActive(false);
-        }
     }
 
     public override void TakeDamage(int dmg)
